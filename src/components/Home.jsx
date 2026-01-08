@@ -1,3 +1,4 @@
+import windmill1 from "../assets/windmill1.avif";
 function Home() {
   return (
     <>
@@ -28,8 +29,8 @@ function Home() {
                     border border-white/25 rounded  "
               >
                 <img
-                  src="/src/assets/windmill1.avif"
-                  alt=""
+                  src={windmill1}
+                  alt="img"
                   className="object-cover rounded"
                 />
                 <div className="">
