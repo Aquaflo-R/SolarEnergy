@@ -76,9 +76,11 @@ function Home() {
               Learn More
             </button>
           </div>
+
+          {/* right-Section */}
           <div
             id="aboutUsImg"
-            className=" relative flex flex-col justify-center ml-40"
+            className="relative flex flex-col justify-center ml-40"
           >
             <img
               src={windmill2}
@@ -88,7 +90,7 @@ function Home() {
             {/* absolute Value */}
             <div
               className="absolute w-3xs bg-[#C7F43E]/40 backdrop-blur-md 
-                    border border-white/25 rounded p-2  left-50 bottom-30"
+                    border border-white/25 rounded p-2  left-2/2 bottom-25 -translate-x-1/2"
             >
               <h1 className="text-2xl text-[#001A00] font-bold ">
                 05+
