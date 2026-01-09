@@ -1,6 +1,22 @@
 import windmill1 from "../assets/windmill1.avif";
 import windmill2 from "../assets/windmill2.avif";
+import logo from "../assets/Logos.png";
 function Home() {
+  const serviceContainer = [
+    {
+      name: "Residential Solar",
+      img: "https://images.unsplash.com/photo-1538309639218-3432f79e0894?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      name: "Hydropower System",
+      img: "https://images.unsplash.com/photo-1589726096666-8bb135284e21?q=80&w=821&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      name: "Wind Turbine",
+      img: "https://images.unsplash.com/photo-1620415629284-975004d37752?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+  ];
+
   return (
     <>
       <main>
@@ -54,7 +70,8 @@ function Home() {
             </div>
           </div>
         </section>
-        <section id="About-Us" className="w-full h-screen flex">
+
+        <section id="About-Us" className="w-full h-screen flex relative">
           <div id="aboutUsText" className="w-[40%] p-10">
             <h3 className="text-[#001A00] font-bold bg-[#F2F2F2] inline-block py-2 px-5 rounded-4xl mt-5">
               About us
@@ -118,6 +135,57 @@ function Home() {
                 skilled execution, and high-quality solar solutions.
               </p>
             </div>
+          </div>
+        </section>
+
+        <section id="services" className="w-screen h-screen p-20">
+          <img
+            src={logo}
+            alt=""
+            className="absolute w-[100px] translate-x-275"
+          />
+          <div
+            id="serviceInnerContainer"
+            className="bg-[#e6e3e35e] w-full h-full p-10"
+          >
+            <h1 className="text-[#001A00] font-bold bg-[#F2F2F2] inline-block py-2 px-5 rounded-4xl mt-5">
+              Services
+            </h1>
+            {/* ------------------serviceText-------------------- */}
+            <div
+              id="serviceText"
+              className="flex justify-between items-center mt-5"
+            >
+              <h1 className="text-4xl font-bold text-[#004700] ">
+                Our Solar Solutions
+              </h1>
+              <p className="text-xl font-sm">
+                we believe in the power of solar<br></br> energy to transform
+                lives and commmunities
+              </p>
+            </div>
+            {/* ----------------serviceContainer---------------------- */}
+            <div
+              id="serviceContainer"
+              className="flex gap-5 justify-center items-center mt-10"
+            >
+              {serviceContainer.map((elem, inx) => (
+                <div
+                  className="w-[28%]  h-[220px] flex items-end  rounded bg-cover bg-center relative"
+                  style={{ backgroundImage: `url(${elem.img})` }}
+                >
+                  <div className="bg-[#11111134] w-full h-full absolute"> </div>
+
+                  <h1 className="text-white text-xl font-medium z-10 p-2">
+                    {elem.name}
+                    <span>
+                      <i className="ri-arrow-right-up-line"></i>
+                    </span>
+                  </h1>
+                </div>
+              ))}
+            </div>
+            {/* -------------------------------------- */}
           </div>
         </section>
       </main>
