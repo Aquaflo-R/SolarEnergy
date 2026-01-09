@@ -179,7 +179,7 @@ function Home() {
                   <h1 className="text-white text-xl font-medium z-10 p-2">
                     {elem.name}
                     <span>
-                      <i className="ri-arrow-right-up-line"></i>
+                      <i className="ri-arrow-right-up-line "></i>
                     </span>
                   </h1>
                 </div>
