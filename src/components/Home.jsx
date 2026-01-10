@@ -1,7 +1,37 @@
 import windmill1 from "../assets/windmill1.avif";
 import windmill2 from "../assets/windmill2.avif";
 import logo from "../assets/Logos.png";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 function Home() {
+  let tl = gsap.timeline();
+  useGSAP(() => {
+    gsap.from(".heroText", {
+      y: -30,
+      opacity: 0,
+      duration: 2,
+      stagger: 0.5,
+    });
+    gsap.to(".heroBtn", {
+      y: 10,
+      opacity: 1,
+      duration: 1,
+    });
+
+    gsap.from("#windmillLeft", {
+      x: -500,
+      duration: 2,
+      ease: "expo.out",
+    });
+
+    gsap.from("#windmillRight", {
+      x: 500,
+      duration: 2,
+      ease: "expo.out",
+    });
+  }, []);
+
   const serviceContainer = [
     {
       name: "Residential Solar",
@@ -21,27 +51,28 @@ function Home() {
     <>
       <main>
         <section id="Hero-Section">
-          <div className="relative w-full h-[720px] bg-[url(/src/assets/windmill.avif)] bg-cover bg-no-repeat bg-center flex flex-col items-center justify-center">
+          <div className="relative w-full h-180 bg-[url(/src/assets/windmill.avif)] bg-cover bg-no-repeat bg-center flex flex-col items-center justify-center">
             <div
               id="overlay "
               className="absolute inset-0 z-2 w-full h-full bg-[#1111107a]"
             ></div>
 
             <div className="z-10 text-center px-20 text-white">
-              <h1 className="text-6xl">
+              <h1 className="text-6xl heroText">
                 Creating a Sustainable Future with Renewable Energy Solutions.
               </h1>
-              <h2 className="text-2xl mt-5 px-80">
+              <h2 className="text-2xl mt-5 px-80 heroText">
                 Discover the amazing ways solar energy can transform your home
                 or business
               </h2>
-              <button className="bg-[#C7F43E] py-2 px-5 mt-2 rounded-3xl font-meduim text-xl">
+              <button className="bg-[#C7F43E] py-2 px-5 mt-2 rounded-3xl font-meduim text-xl heroBtn">
                 <i class="ri-arrow-right-fill"></i>Get A free Quote
               </button>
             </div>
 
-            <div className="w-[550px]  h-[180px]  flex gap-2 z-10 mt-10">
+            <div className="w-137.5  h-45  flex gap-2 z-10 mt-10">
               <div
+                id="windmillLeft"
                 className="w-full h-full  flex p-2 gap-5 bg-white/15 backdrop-blur-sm 
                     border border-white/25 rounded  "
               >
@@ -59,7 +90,8 @@ function Home() {
                 </div>
               </div>
               <div
-                className="w-[200px]  h-full bg-white/15 backdrop-blur-sm 
+                id="windmillRight"
+                className="w-50  h-full bg-white/15 backdrop-blur-sm 
                     border border-white/25 flex items-end p-2 rounded"
               >
                 <p className="text-white">
@@ -139,11 +171,7 @@ function Home() {
         </section>
 
         <section id="services" className="w-screen h-screen p-20">
-          <img
-            src={logo}
-            alt=""
-            className="absolute w-[100px] translate-x-275"
-          />
+          <img src={logo} alt="" className="absolute w-25 translate-x-275" />
           <div
             id="serviceInnerContainer"
             className="bg-[#e6e3e35e] w-full h-full p-10"
@@ -171,7 +199,7 @@ function Home() {
             >
               {serviceContainer.map((elem, inx) => (
                 <div
-                  className="w-[28%]  h-[220px] flex items-end  rounded bg-cover bg-center relative"
+                  className="w-[28%]  h-55 flex items-end  rounded bg-cover bg-center relative"
                   style={{ backgroundImage: `url(${elem.img})` }}
                 >
                   <div className="bg-[#11111134] w-full h-full absolute"> </div>
