@@ -30,6 +30,14 @@ function Home() {
       duration: 2,
       ease: "expo.out",
     });
+
+    gsap.from("#circle", {
+      rotation: 360,
+
+      repeat: -1,
+      duration: 10,
+      ease: "none",
+    });
   }, []);
 
   const serviceContainer = [
@@ -171,7 +179,12 @@ function Home() {
         </section>
 
         <section id="services" className="w-screen h-screen p-20">
-          <img src={logo} alt="" className="absolute w-25 translate-x-275" />
+          <img
+            src={logo}
+            alt=""
+            id="circle"
+            className="absolute w-25 translate-x-275"
+          />
           <div
             id="serviceInnerContainer"
             className="bg-[#e6e3e35e] w-full h-full p-10"
