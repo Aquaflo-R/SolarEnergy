@@ -33,7 +33,6 @@ function Home() {
 
     gsap.from("#circle", {
       rotation: 360,
-
       repeat: -1,
       duration: 10,
       ease: "none",
