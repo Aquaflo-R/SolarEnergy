@@ -5,10 +5,14 @@ import logo from "../assets/Logos.png";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
+  const Aboutpage = useRef(null);
+  const servicePage = useRef(null);
+
   useGSAP(() => {
     gsap.from(".heroText", {
       y: -30,
@@ -39,6 +43,53 @@ function Home() {
       repeat: -1,
       duration: 10,
       ease: "none",
+    });
+
+    gsap.from("#aboutText", {
+      opacity: 0,
+      y: -50,
+      duration: 2,
+      scrollTrigger: {
+        trigger: Aboutpage.current,
+        // markers: true,
+        scrub: true,
+        start: "top 70%",
+        end: "top 20%",
+      },
+    });
+
+    gsap.from(".aboutPara ", {
+      x: -100,
+      stagger: 0.5,
+      scrollTrigger: {
+        trigger: Aboutpage.current,
+        // markers: true,
+        start: "top 40%",
+      },
+    });
+
+    gsap.from("#aboutUsImg", {
+      opacity: 0,
+      y: -300,
+      duration: 2,
+      scrollTrigger: {
+        trigger: Aboutpage.current,
+        // markers: true,
+        start: "top 50%",
+      },
+    });
+
+    gsap.from(".service-card", {
+      y: 100,
+      opacity: 0,
+      stagger: {
+        amount: 0.5,
+      },
+      scrollTrigger: {
+        trigger: servicePage.current,
+        markers: true,
+        start: "top 30%",
+      },
     });
   });
 
@@ -113,7 +164,11 @@ function Home() {
           </div>
         </section>
 
-        <div id="About-Us" className="w-full h-screen flex relative">
+        <div
+          ref={Aboutpage}
+          id="About-Us"
+          className="w-full h-screen flex relative"
+        >
           <div id="aboutUsText" className="w-[40%] p-10">
             <h3
               id="aboutText"
@@ -123,11 +178,11 @@ function Home() {
             </h3>
             <h1
               id="aboutTitle"
-              className="text-4xl font-bold text-[#004700] mt-20 "
+              className="aboutPara ext-4xl font-bold text-[#004700] mt-20 "
             >
               The Green Power
             </h1>
-            <p id="aboutPara" className="text-xl mt-5 ">
+            <p id="aboutPara" className="aboutPara text-xl mt-5 ">
               The Green Power is our commitment to a cleaner, smarter, and more
               sustainable future. We believe energy should not harm the planet —
               it should protect it. By using solar and renewable solutions, we
@@ -137,7 +192,10 @@ function Home() {
               respecting nature.<br></br>
               <br></br> We don’t just generate power — we generate impact.
             </p>
-            <button className="bg-[#C7F43E] text-[#001A00] py-2 px-5 rounded-4xl mt-5">
+            <button
+              id="AboutBtn"
+              className=" aboutPara bg-[#C7F43E] text-[#001A00] py-2 px-5 rounded-4xl mt-5"
+            >
               Learn More
             </button>
           </div>
@@ -186,7 +244,7 @@ function Home() {
           </div>
         </div>
 
-        <section id="services" className="w-screen h-screen p-20">
+        <div ref={servicePage} id="services" className="w-screen h-screen p-20">
           <img
             src={logo}
             alt=""
@@ -220,7 +278,7 @@ function Home() {
             >
               {serviceContainer.map((elem, inx) => (
                 <div
-                  className="w-[28%]  h-55 flex items-end  rounded bg-cover bg-center relative"
+                  className="service-card w-[28%]  h-55 flex items-end  rounded bg-cover bg-center relative"
                   style={{ backgroundImage: `url(${elem.img})` }}
                 >
                   <div className="bg-[#11111134] w-full h-full absolute"> </div>
@@ -236,7 +294,7 @@ function Home() {
             </div>
             {/* -------------------------------------- */}
           </div>
-        </section>
+        </div>
       </main>
     </>
   );
