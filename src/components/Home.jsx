@@ -1,11 +1,14 @@
 import windmill1 from "../assets/windmill1.avif";
 import windmill2 from "../assets/windmill2.avif";
 import logo from "../assets/Logos.png";
+
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
-  let tl = gsap.timeline();
   useGSAP(() => {
     gsap.from(".heroText", {
       y: -30,
@@ -37,7 +40,7 @@ function Home() {
       duration: 10,
       ease: "none",
     });
-  }, []);
+  });
 
   const serviceContainer = [
     {
@@ -110,15 +113,21 @@ function Home() {
           </div>
         </section>
 
-        <section id="About-Us" className="w-full h-screen flex relative">
+        <div id="About-Us" className="w-full h-screen flex relative">
           <div id="aboutUsText" className="w-[40%] p-10">
-            <h3 className="text-[#001A00] font-bold bg-[#F2F2F2] inline-block py-2 px-5 rounded-4xl mt-5">
+            <h3
+              id="aboutText"
+              className="text-[#001A00] font-bold bg-[#F2F2F2] inline-block py-2 px-5 rounded-4xl mt-5 "
+            >
               About us
             </h3>
-            <h1 className="text-4xl font-bold text-[#004700] mt-20">
+            <h1
+              id="aboutTitle"
+              className="text-4xl font-bold text-[#004700] mt-20 "
+            >
               The Green Power
             </h1>
-            <p className="text-xl mt-5">
+            <p id="aboutPara" className="text-xl mt-5 ">
               The Green Power is our commitment to a cleaner, smarter, and more
               sustainable future. We believe energy should not harm the planet —
               it should protect it. By using solar and renewable solutions, we
@@ -175,14 +184,14 @@ function Home() {
               </p>
             </div>
           </div>
-        </section>
+        </div>
 
         <section id="services" className="w-screen h-screen p-20">
           <img
             src={logo}
             alt=""
             id="circle"
-            className="absolute w-25 translate-x-275"
+            className="absolute w-25 translate-x-275 mt-2"
           />
           <div
             id="serviceInnerContainer"
