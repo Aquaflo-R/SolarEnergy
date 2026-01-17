@@ -87,8 +87,20 @@ function Home() {
       },
       scrollTrigger: {
         trigger: servicePage.current,
-        markers: true,
+        // markers: true,
         start: "top 30%",
+      },
+    });
+
+    gsap.to(".marquee", {
+      xPercent: 130,
+      scrollTrigger: {
+        trigger: ".marquee",
+        markers: true,
+        start: "top 60%",
+        scrub: {
+          amount: 5,
+        },
       },
     });
   });
@@ -244,7 +256,13 @@ function Home() {
           </div>
         </div>
 
-        <div ref={servicePage} id="services" className="w-screen h-screen p-20">
+        <div className="bg-[#C7F43E] h-50 w-full flex  overflow-hidden">
+          <div className="marquee flex items-center justify-center">
+            <h1 className="text-8xl solarEnergy mx-10">SolarEnergy</h1>
+          </div>
+        </div>
+
+        <div ref={servicePage} id="services" className="w-full h-screen p-20">
           <img
             src={logo}
             alt=""
